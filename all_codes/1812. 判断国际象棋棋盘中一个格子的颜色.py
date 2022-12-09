@@ -30,8 +30,11 @@
 coordinates.length == 2
 'a' <= coordinates[0] <= 'h'
 '1' <= coordinates[1] <= '8'
+
+https://leetcode.cn/problems/determine-color-of-a-chessboard-square/
 '''
 
 class Solution:
     def squareIsWhite(self, coordinates: str) -> bool:
+        # 字符转化为 ASCII 后做运算
         return (ord(coordinates[0]) + ord(coordinates[1]) - ord("a")) & 1 == 0
