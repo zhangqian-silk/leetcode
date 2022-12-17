@@ -34,6 +34,8 @@
 https://leetcode.cn/problems/minimum-operations-to-make-the-array-increasing/description/
 '''
 
+from typing import List
+
 class Solution:
     def minOperations(self, nums: List[int]) -> int:
         step = 0
