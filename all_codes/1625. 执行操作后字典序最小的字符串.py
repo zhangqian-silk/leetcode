@@ -71,111 +71,113 @@ def getCount(a: int, num: int) -> int:
         res = 1 if num >= 5 else 0
     return res
 
-def findLexSmallestString(s: str, a: int, b: int) -> str:
-    '''
-    字典序最小，等价于 s 的具体数字的值最小。
-    数字 a 只能累加至奇数位的数字上，
-    可通过判断 b 的值与 s 的长度，
-    计算可轮转至第 0 位、第 1 位数字的取值，并进而算出最小值。
-    '''    
 
-    if a == 3 or a == 7 or a == 9:
-        # (3*7) % 10 = 1, (9*9) % 10 = 1
-        a = 1
-    elif a == 4 or a == 6 or a == 8:
-        # (4*3) % 10 = 2, (6*2) % 10 = 2, (8*4) % 10 = 2
-        a = 2
+class Solution:
+    def findLexSmallestString(self, s: str, a: int, b: int) -> str:
+        '''
+        字典序最小，等价于 s 的具体数字的值最小。
+        数字 a 只能累加至奇数位的数字上，
+        可通过判断 b 的值与 s 的长度，
+        计算可轮转至第 0 位、第 1 位数字的取值，并进而算出最小值。
+        '''    
 
-    # 寻找可被轮转至首位的具体位数
-    indexList = []
-    lenS = len(s)
-    curIndex = lenS - b
-    while True:
-        if curIndex in indexList:
-            break
-        indexList.append(curIndex)
-        curIndex = (curIndex - b) % lenS
-    print("indexList = ")
-    print(indexList)
+        if a == 3 or a == 7 or a == 9:
+            # (3*7) % 10 = 1, (9*9) % 10 = 1
+            a = 1
+        elif a == 4 or a == 6 or a == 8:
+            # (4*3) % 10 = 2, (6*2) % 10 = 2, (8*4) % 10 = 2
+            a = 2
 
-    # 计算所有可轮转至首位的数字的后续数字大小
-    curIndex = indexList[0]
-    # 首位、次位数字累加 a 的数量
-    curCount1 = getCount(a, int(s[(curIndex) % lenS]))
-    curCount2 = getCount(a, int(s[(curIndex+1) % lenS]))
-    if b & 1 == 0:
-        curCount1 = 0
-    
-    for idx in indexList:
-        if idx == curIndex:
-            continue
-        
-        print("----------------------------------")
-        num1 = int(s[curIndex])
-        num2 = int(s[idx])
-        
-        # 计算当前首位取最小值时，所需要累加的 a 的次数
-        count11 = curCount1
-        count12 = curCount2
-        count21 = getCount(a, int(s[(idx) % lenS]))
-        count22 = getCount(a, int(s[(idx+1) % lenS]))
-
-        # 如果 b 为偶数，则所有首位数字不能累加 a
-        index1 = curIndex
-        index2 = idx
-        if b & 1 == 0:
-            print("num1 = " + str(num1) + " index = " + str(curIndex))
-            print("num2 = " + str(num2) + " index = " + str(idx))
-            curCount1 = count11 = count21 = 0
-            if num1 < num2:
-                curIndex = index1
-                curCount2 = count12
-                continue
-            elif num1 > num2:
-                curIndex = index2
-                curCount2 = count22
-                continue
-
-        # 循环比较以 num1、num2 为首的数字的大小
-        compareIdx = 0
-        while compareIdx < lenS:
-            # 区分奇偶数进行累加
-            if compareIdx & 1 == 0:
-                num1 = (int(s[(index1+compareIdx) % lenS]) + a * count11) % 10
-                num2 = (int(s[(index2+compareIdx) % lenS]) + a * count21) % 10
-            else:
-                num1 = (int(s[(index1+compareIdx) % lenS]) + a * count12) % 10
-                num2 = (int(s[(index2+compareIdx) % lenS]) + a * count22) % 10
-            print("num1 = " + str(num1) + " index = " + str(curIndex))
-            print("num2 = " + str(num2) + " index = " + str(idx))
-
-            if num1 == num2:
-                compareIdx += 1
-            else:
-                if num1 < num2:
-                    curIndex = curIndex
-                    curCount1 = count11
-                    curCount2 = count12
-                else:
-                    curIndex = idx
-                    curCount1 = count21
-                    curCount2 = count22
+        # 寻找可被轮转至首位的具体位数
+        indexList = []
+        lenS = len(s)
+        curIndex = lenS - b
+        while True:
+            if curIndex in indexList:
                 break
-    
-    resList = list(map(int, list(s)))
-    res = ""
-    for i in range(lenS):
-        num = resList[(curIndex + i) % lenS]
-        if i & 1 == 0:
-            num = (num + a * curCount1) % 10
-        else:
-            num = (num + a * curCount2) % 10
-        res += str(num)
+            indexList.append(curIndex)
+            curIndex = (curIndex - b) % lenS
+        print("indexList = ")
+        print(indexList)
 
-    return res
+        # 计算所有可轮转至首位的数字的后续数字大小
+        curIndex = indexList[0]
+        # 首位、次位数字累加 a 的数量
+        curCount1 = getCount(a, int(s[(curIndex) % lenS]))
+        curCount2 = getCount(a, int(s[(curIndex+1) % lenS]))
+        if b & 1 == 0:
+            curCount1 = 0
+        
+        for idx in indexList:
+            if idx == curIndex:
+                continue
+            
+            print("----------------------------------")
+            num1 = int(s[curIndex])
+            num2 = int(s[idx])
+            
+            # 计算当前首位取最小值时，所需要累加的 a 的次数
+            count11 = curCount1
+            count12 = curCount2
+            count21 = getCount(a, int(s[(idx) % lenS]))
+            count22 = getCount(a, int(s[(idx+1) % lenS]))
+
+            # 如果 b 为偶数，则所有首位数字不能累加 a
+            index1 = curIndex
+            index2 = idx
+            if b & 1 == 0:
+                print("num1 = " + str(num1) + " index = " + str(curIndex))
+                print("num2 = " + str(num2) + " index = " + str(idx))
+                curCount1 = count11 = count21 = 0
+                if num1 < num2:
+                    curIndex = index1
+                    curCount2 = count12
+                    continue
+                elif num1 > num2:
+                    curIndex = index2
+                    curCount2 = count22
+                    continue
+
+            # 循环比较以 num1、num2 为首的数字的大小
+            compareIdx = 0
+            while compareIdx < lenS:
+                # 区分奇偶数进行累加
+                if compareIdx & 1 == 0:
+                    num1 = (int(s[(index1+compareIdx) % lenS]) + a * count11) % 10
+                    num2 = (int(s[(index2+compareIdx) % lenS]) + a * count21) % 10
+                else:
+                    num1 = (int(s[(index1+compareIdx) % lenS]) + a * count12) % 10
+                    num2 = (int(s[(index2+compareIdx) % lenS]) + a * count22) % 10
+                print("num1 = " + str(num1) + " index = " + str(curIndex))
+                print("num2 = " + str(num2) + " index = " + str(idx))
+
+                if num1 == num2:
+                    compareIdx += 1
+                else:
+                    if num1 < num2:
+                        curIndex = curIndex
+                        curCount1 = count11
+                        curCount2 = count12
+                    else:
+                        curIndex = idx
+                        curCount1 = count21
+                        curCount2 = count22
+                    break
+        
+        resList = list(map(int, list(s)))
+        res = ""
+        for i in range(lenS):
+            num = resList[(curIndex + i) % lenS]
+            if i & 1 == 0:
+                num = (num + a * curCount1) % 10
+            else:
+                num = (num + a * curCount2) % 10
+            res += str(num)
+
+        return res
 
 s = "31"
 a = 4
 b = 1
-res = findLexSmallestString(s, a, b)
+res = Solution().findLexSmallestString(s, a, b)
 print(res)
