@@ -1,5 +1,10 @@
-# LeetCode
-LeetCode解答方案代码
+# Leetcode
 
-记录自己刷LeetCode的一些代码，语言主要为python
-> 人生苦短，我用python
+题解。
+
+## Ref
+
+- <https://leetcode.cn/problemset/>
+- <https://oi-wiki.org/>
+- <https://labuladong.online/algo/home/>
+- <https://github.com/labuladong/fucking-algorithm/tree/master>
