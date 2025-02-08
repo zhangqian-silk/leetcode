@@ -21,7 +21,7 @@ package main
 	link: https://leetcode.cn/problems/subsets/description/
 */
 
-func subsets(nums []int) [][]int {
+func Subsets(nums []int) [][]int {
 	// 用二进制数据表示数组中各位数的选择情况，即 0 - 11...11 (长度为 nums.length)
 	length := len(nums)
 	maxValue := 1 << length
