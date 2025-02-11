@@ -30,8 +30,8 @@ package main
 		解释：函数应返回新长度 length = 7, 并且原数组的前七个元素被修改为 0, 0, 1, 1, 2, 3, 3。不需要考虑数组中超出新长度后面的元素。
 
 	提示：
-		1 <= nums.length <= 3 * 104
-		-104 <= nums[i] <= 104
+		1 <= nums.length <= 3 * 10^4
+		-10^4 <= nums[i] <= 10^4
 		nums 已按升序排列
 
 	link: https://leetcode.cn/problems/remove-duplicates-from-sorted-array-ii/description/

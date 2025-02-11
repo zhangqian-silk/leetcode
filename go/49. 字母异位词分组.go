@@ -20,7 +20,7 @@ import "slices"
 		输出: [["a"]]
 
 	提示：
-		1 <= strs.length <= 104
+		1 <= strs.length <= 10^4
 		0 <= strs[i].length <= 100
 		strs[i] 仅包含小写字母
 
