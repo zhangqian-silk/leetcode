@@ -32,7 +32,7 @@ func LongestConsecutive(nums []int) int {
 	}
 
 	var res int
-	for num, _ := range numSet {
+	for num := range numSet {
 		if _, ok := numSet[num-1]; !ok {
 			i := 1
 			for {
