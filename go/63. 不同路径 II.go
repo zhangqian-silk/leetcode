@@ -10,6 +10,7 @@ package main
 	测试用例保证答案小于等于 2 * 109。
 
 	示例 1：
+
 		输入：obstacleGrid = [[0,0,0],[0,1,0],[0,0,0]]
 		输出：2
 		解释：3x3 网格的正中间有一个障碍物。
@@ -18,10 +19,12 @@ package main
 		2. 向下 -> 向下 -> 向右 -> 向右
 
 	示例 2：
+
 		输入：obstacleGrid = [[0,1],[0,0]]
 		输出：1
 
 	提示：
+
 		m == obstacleGrid.length
 		n == obstacleGrid[i].length
 		1 <= m, n <= 100

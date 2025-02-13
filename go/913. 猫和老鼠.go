@@ -23,14 +23,17 @@ package main
 	如果平局，则返回 0 。
 
 	示例 1：
+
 		输入：graph = [[2,5],[3],[0,4,5],[1,4,5],[2,3],[0,2,3]]
 		输出：0
 
 	示例 2：
+
 		输入：graph = [[1,3],[0],[3],[0,2]]
 		输出：1
 
 	提示：
+
 		3 <= graph.length <= 50
 		1 <= graph[i].length < graph.length
 		0 <= graph[i][j] < graph.length
