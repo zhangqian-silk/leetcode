@@ -12,6 +12,7 @@ package main
 	请你返回进行上述操作后的最小开销。
 
 	示例 1：
+
 		输入：nums = [9], maxOperations = 2
 		输出：3
 		解释：
@@ -20,6 +21,7 @@ package main
 		装有最多球的袋子里装有 3 个球，所以开销为 3 并返回 3 。
 
 	示例 2：
+
 		输入：nums = [2,4,8,2], maxOperations = 4
 		输出：2
 		解释：
@@ -30,10 +32,12 @@ package main
 		装有最多球的袋子里装有 2 个球，所以开销为 2 并返回 2 。
 
 	示例 3：
+
 		输入：nums = [7,17], maxOperations = 2
 		输出：7
 
 	提示：
+
 		1 <= nums.length <= 10^5
 		1 <= maxOperations, nums[i] <= 10^9
 
