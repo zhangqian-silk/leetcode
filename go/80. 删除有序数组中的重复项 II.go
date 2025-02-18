@@ -41,7 +41,7 @@ package main
 	link: https://leetcode.cn/problems/remove-duplicates-from-sorted-array-ii/description/
 */
 
-func RemoveDuplicates(nums []int) int {
+func removeDuplicates(nums []int) int {
 	length := len(nums)
 	if length <= 2 {
 		return length

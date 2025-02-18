@@ -44,7 +44,7 @@ package main
 	link: https://leetcode.cn/problems/minimum-limit-of-balls-in-a-bag/description/
 */
 
-func MinimumSize(nums []int, maxOperations int) int {
+func minimumSize(nums []int, maxOperations int) int {
 	left := 0
 	right := 1
 	cur := 1

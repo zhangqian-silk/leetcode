@@ -43,7 +43,7 @@ package main
 	link: https://leetcode.cn/problems/where-will-the-ball-fall/description/
 */
 
-func FindBall(grid [][]int) []int {
+func findBall(grid [][]int) []int {
 	// 网格大小为 m * n
 	m := len(grid)
 	n := len(grid[0])

@@ -31,7 +31,7 @@ package main
 	link: https://leetcode.cn/problems/replace-elements-with-greatest-element-on-right-side/description/
 */
 
-func ReplaceElements(arr []int) []int {
+func replaceElements(arr []int) []int {
 	// 需要找到当前元素右侧的最大值，直接逆序遍历
 	res := make([]int, len(arr))
 

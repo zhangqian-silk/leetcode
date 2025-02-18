@@ -32,7 +32,7 @@ import "slices"
 	link: https://leetcode.cn/problems/magnetic-force-between-two-balls/description/
 */
 
-func MaxDistance(position []int, m int) int {
+func maxDistance(position []int, m int) int {
 	// 先将 position 排序，然后计算每两个位置间的磁力
 	slices.Sort(position)
 	nums := make([]int, len(position)-1)

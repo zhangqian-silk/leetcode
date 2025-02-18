@@ -19,7 +19,7 @@ import "fmt"
 		1 <= n <= 20
 */
 
-func GenerateMatrix(n int) [][]int {
+func generateMatrix(n int) [][]int {
 	res := make([][]int, n)
 	for i := range n {
 		res[i] = make([]int, n)

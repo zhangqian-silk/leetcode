@@ -27,7 +27,7 @@ import (
 	link: https://leetcode.cn/problems/subsets-ii/description/
 */
 
-func SubsetsWithDup(nums []int) [][]int {
+func subsetsWithDup(nums []int) [][]int {
 	/*
 		用二进制数据表示数组中各位数的选择情况，即 0 - 11...11 (长度为 nums.length)
 

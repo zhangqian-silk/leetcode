@@ -24,7 +24,7 @@ package main
 	link: https://leetcode.cn/problems/longest-consecutive-sequence/description/
 */
 
-func LongestConsecutive(nums []int) int {
+func longestConsecutive(nums []int) int {
 	if len(nums) <= 1 {
 		return len(nums)
 	}

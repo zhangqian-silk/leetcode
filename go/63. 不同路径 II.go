@@ -33,7 +33,7 @@ package main
 	link: https://leetcode.cn/problems/unique-paths-ii/description/
 */
 
-func UniquePathsWithObstacles(obstacleGrid [][]int) int {
+func uniquePathsWithObstacles(obstacleGrid [][]int) int {
 	/*
 		因为只能向下或者向右移动，所以有：
 			dp[i][j] = dp[i][j-1] + dp[i-1][j]
