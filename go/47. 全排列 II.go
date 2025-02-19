@@ -26,7 +26,7 @@ import "slices"
 	link: https://leetcode.cn/problems/permutations-ii/description/
 */
 
-func permuteUnique(nums []int) [][]int {
+func PermuteUnique_47(nums []int) [][]int {
 	visited := make(map[int]struct{}, 0)
 	slices.Sort(nums)
 	var res [][]int

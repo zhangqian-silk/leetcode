@@ -31,7 +31,7 @@ import "slices"
 	link: https://leetcode.cn/problems/group-anagrams/description/
 */
 
-func groupAnagrams(strs []string) [][]string {
+func GroupAnagrams_49(strs []string) [][]string {
 	if len(strs) <= 1 {
 		return [][]string{strs}
 	}

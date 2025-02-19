@@ -42,7 +42,7 @@ package main
 	link: https://leetcode.cn/problems/maximum-number-of-balls-in-a-box/description/
 */
 
-func countBalls(lowLimit int, highLimit int) int {
+func CountBalls_1742(lowLimit int, highLimit int) int {
 	var res int
 	// hightLimit 上限为 10^5，所以 key 最大为 99999 各位数字的合
 	// 注意 key 为连续的自然数，所以用 slice 而不是 map

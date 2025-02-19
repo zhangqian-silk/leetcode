@@ -18,7 +18,7 @@ package main
 	link: https://leetcode.cn/problems/element-appearing-more-than-25-in-sorted-array/description/
 */
 
-func findSpecialInteger(arr []int) int {
+func FindSpecialInteger_1287(arr []int) int {
 	length := len(arr) / 4
 	var i int
 	for {

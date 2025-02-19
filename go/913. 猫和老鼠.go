@@ -44,7 +44,7 @@ package main
 	link: https://leetcode.cn/problems/cat-and-mouse/description/
 */
 
-func catMouseGame(graph [][]int) int {
+func CatMouseGame_913(graph [][]int) int {
 	// 参考：https://leetcode.cn/problems/cat-and-mouse/solutions/1190676/pytuo-bu-pai-xu-ni-xiang-si-wei-by-migea-ie1b/
 	type Status struct {
 		ini, ip, op int

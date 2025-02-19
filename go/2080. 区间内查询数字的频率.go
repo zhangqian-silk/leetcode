@@ -49,8 +49,8 @@ func Constructor(arr []int) RangeFreqQuery {
 	}
 }
 
-func (this *RangeFreqQuery) Query(left int, right int, value int) int {
-	indexArr := this.indexMap[value]
+func (q *RangeFreqQuery) Query(left int, right int, value int) int {
+	indexArr := q.indexMap[value]
 	// 一定不满足的情况
 	if len(indexArr) == 0 ||
 		indexArr[0] > right ||
