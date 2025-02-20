@@ -31,7 +31,7 @@ package main
 	link: https://leetcode.cn/problems/maximum-distance-in-arrays/description/
 */
 
-func MaxDistance624(arrays [][]int) int {
+func MaxDistance_624(arrays [][]int) int {
 	var minValue, minIndex, maxValue, maxIndex, lastMinValue, lastMaxValue int
 	for i, arr := range arrays {
 		curMin := arr[0]
