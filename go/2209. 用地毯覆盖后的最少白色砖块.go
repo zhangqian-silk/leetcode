@@ -34,7 +34,7 @@ package main
 	link: https://leetcode.cn/problems/minimum-white-tiles-after-covering-with-carpets/description/
 */
 
-func minimumWhiteTiles(floor string, numCarpets int, carpetLen int) int {
+func MinimumWhiteTiles_2209(floor string, numCarpets int, carpetLen int) int {
 	/*
 		dp[i][j] 表示用 i 个地毯覆盖前 j 个地板时，剩余白色地块的最小数目
 
