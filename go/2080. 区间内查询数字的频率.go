@@ -38,7 +38,7 @@ type RangeFreqQuery struct {
 	indexMap map[int][]int
 }
 
-func Constructor(arr []int) RangeFreqQuery {
+func Constructor_2080(arr []int) RangeFreqQuery {
 	indexMap := make(map[int][]int)
 	for i, value := range arr {
 		indexMap[value] = append(indexMap[value], i)
