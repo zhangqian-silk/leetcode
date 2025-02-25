@@ -50,20 +50,20 @@ func Constructor_1656(n int) OrderedStream {
 	}
 }
 
-func (this *OrderedStream) Insert(idKey int, value string) []string {
-	this.values[idKey] = value
+func (o *OrderedStream) Insert(idKey int, value string) []string {
+	o.values[idKey] = value
 	var res []string
-	if idKey == this.ptr {
+	if idKey == o.ptr {
 		for {
-			if this.ptr == len(this.values) {
+			if o.ptr == len(o.values) {
 				break
 			}
-			curValue := this.values[this.ptr]
+			curValue := o.values[o.ptr]
 			if len(curValue) == 0 {
 				break
 			}
 			res = append(res, curValue)
-			this.ptr++
+			o.ptr++
 		}
 	}
 	return res

@@ -67,21 +67,18 @@ func Constructor_1206() Skiplist {
 	return Skiplist{}
 }
 
-func (this *Skiplist) Search(target int) bool {
-	res := this.searchNode(target)
-	if res != nil {
-		return true
-	}
-	return false
+func (s *Skiplist) Search(target int) bool {
+	res := s.searchNode(target)
+	return res != nil
 }
 
-func (this *Skiplist) searchNode(target int) *skiplistNode {
+func (s *Skiplist) searchNode(target int) *skiplistNode {
 	var curNode *skiplistNode
 	// 遍历首节点列表，找到一个值小于等于当前节点的首节点
-	for i := len(this.headNodes) - 1; i >= 0; i-- {
-		headNode := this.headNodes[i]
+	for i := len(s.headNodes) - 1; i >= 0; i-- {
+		headNode := s.headNodes[i]
 		if headNode != nil && headNode.value <= target {
-			curNode = this.headNodes[i]
+			curNode = s.headNodes[i]
 			break
 		}
 	}
@@ -102,7 +99,7 @@ func (this *Skiplist) searchNode(target int) *skiplistNode {
 	return nil
 }
 
-func (this *Skiplist) Add(num int) {
+func (s *Skiplist) Add(num int) {
 	level := randomLevel()
 	var extraHeadNodes []*skiplistNode
 	var laseNewNode *skiplistNode
@@ -114,18 +111,18 @@ func (this *Skiplist) Add(num int) {
 		}
 		laseNewNode = newNode
 
-		if i > len(this.headNodes) {
+		if i > len(s.headNodes) {
 			// 目前所有索引层次比该节点要低，先加入临时列表中
 			// 再倒序统一添加至头节点列表
 			extraHeadNodes = append(extraHeadNodes, newNode)
 		} else {
 			if curNode == nil {
 				// curNode 为空，取该层级的头节点
-				headNode := this.headNodes[i-1]
-				if headNode == nil || (headNode != nil && headNode.value > num) {
+				headNode := s.headNodes[i-1]
+				if headNode == nil || headNode.value > num {
 					// 新节点为新的首节点
 					newNode.right = headNode
-					this.headNodes[i-1] = newNode
+					s.headNodes[i-1] = newNode
 					if headNode != nil {
 						headNode.left = newNode
 					}
@@ -153,24 +150,24 @@ func (this *Skiplist) Add(num int) {
 
 	// 将 extraHeadNodes 中的元素，倒序插入头节点列表
 	for i := len(extraHeadNodes) - 1; i >= 0; i-- {
-		this.headNodes = append(this.headNodes, extraHeadNodes[i])
+		s.headNodes = append(s.headNodes, extraHeadNodes[i])
 	}
 	// fmt.Printf("add %d\n", num)
-	// this.printDebug()
+	// s.DebugPrint_1206()
 }
 
-func (this *Skiplist) printDebug() {
-	for i := len(this.headNodes) - 1; i >= 0; i-- {
+func (s *Skiplist) DebugPrint_1206() {
+	for i := len(s.headNodes) - 1; i >= 0; i-- {
 		fmt.Printf("第 %d 层：", i)
-		for node := this.headNodes[i]; node != nil; node = node.right {
+		for node := s.headNodes[i]; node != nil; node = node.right {
 			fmt.Printf("%d, ", node.value)
 		}
 	}
 	fmt.Printf("\n----------------\n")
 }
 
-func (this *Skiplist) Erase(num int) bool {
-	node := this.searchNode(num)
+func (s *Skiplist) Erase(num int) bool {
+	node := s.searchNode(num)
 	if node == nil {
 		return false
 	}
@@ -186,7 +183,7 @@ func (this *Skiplist) Erase(num int) bool {
 			node.left.right = node.right
 			// fmt.Printf("left: %d, ", node.left.value)
 		} else {
-			this.headNodes[node.level-1] = node.right
+			s.headNodes[node.level-1] = node.right
 
 		}
 
