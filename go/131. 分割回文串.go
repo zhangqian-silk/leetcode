@@ -39,31 +39,33 @@ func check_131(s string) bool {
 
 func Partition_131(s string) [][]string {
 	var res [][]string
-
-	var dfs func(idx int, curString string, curRes []string)
-	dfs = func(idx int, curString string, curRes []string) {
+	var curRes []string
+	var dfs func(int)
+	dfs = func(idx int) {
 		if idx == len(s) {
-			// 遍历结束，最后一次判断
-			if check_131(curString) {
-				// 深拷贝，避免 res 被修改
-				newRes := make([]string, len(curRes))
-				copy(newRes, curRes)
-				res = append(res, append(newRes, curString))
-			}
+			// 深拷贝，避免 res 被修改
+			newRes := make([]string, len(curRes))
+			copy(newRes, curRes)
+			res = append(res, newRes)
 			return
 		}
 
-		// 选择当前字符继续拼接子串，则加上当前字符继续递归
-		newString := curString + string(s[idx])
-		// 记录当前切片长度，后续从该长度进行剪切
+		// 从当前位置开始循环判断，当满足回文串时，
+		// 从下一个位置继续递归
+		var curStr string
 		curLength := len(curRes)
-		dfs(idx+1, newString, curRes)
-		// 不选择当前字符拼接子串，则判断之前的子串是否为回文串
-		if check_131(curString) {
-			// 如果之前的子串构成回文串，则添加至 res 中
-			dfs(idx+1, string(s[idx]), append(curRes[:curLength], curString))
+		for i := idx; i < len(s); i++ {
+			curStr += string(s[i])
+			if !check_131(curStr) {
+				continue
+			}
+
+			// 将当前字符添加至拆分的结果中，并递归判断剩余字符
+			curRes = append(curRes, curStr)
+			dfs(i + 1)
+			curRes = curRes[:curLength]
 		}
 	}
-	dfs(0, "", nil)
+	dfs(0)
 	return res
 }
