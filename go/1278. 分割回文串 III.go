@@ -59,30 +59,9 @@ func PalindromePartition_1278(s string, k int) int {
 	dp := make([]int, len(s))
 	lastDp := make([]int, len(s))
 
-	// 初始化缓存与 dp 数组
-	cache := make([][]bool, len(s))
 	for i := range len(s) {
-		cache[i] = make([]bool, len(s))
 		// 初始化分给成 1 个回文串时的最小改动字符数
 		lastDp[i] = cost_1278(s, 0, i)
-		// 最大分割次数为字符串长度减一，即与索引相同
-		for j := range len(s) {
-			// 当 j >= i 时，为合法子串，先全部初始化为 true
-			cache[i][j] = (j >= i)
-		}
-	}
-
-	// 更新 cache 中的值
-	for i := len(s) - 1; i >= 0; i-- {
-		for j := i + 1; j < len(s); j++ {
-			// 计算时依赖 dp[i+1][j-1] 的值
-			// 所以 i 倒序遍历，j 正序遍历
-			if j-i == 1 {
-				cache[i][j] = s[i] == s[j]
-			} else {
-				cache[i][j] = s[i] == s[j] && cache[i+1][j-1]
-			}
-		}
 	}
 
 	// lastDp 已经初始化为拆分为一个字符串时的消耗
